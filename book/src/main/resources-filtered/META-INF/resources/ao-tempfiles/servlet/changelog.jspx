@@ -53,7 +53,7 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 				scmUrl="@{documented.scm.url}"
 			>
 				<ul>
-					<li>New module to manage <core:link book="/ao-tempfiles" page="/index.jspx">temporary files</core:link> in servlet-based applications and components.</li>
+					<li>New module to manage <core:link book="/ao-tempfiles" page="/">temporary files</core:link> in servlet-based applications and components.</li>
 				</ul>
 			</changelog:release>
 		</c:if>
