@@ -1,4 +1,4 @@
-# [<img src="ao-logo.png" alt="AO Logo" width="35" height="40">](https://aoindustries.com/) [AO TempFiles](https://aoindustries.com/ao-tempfiles/) / [Servlet](https://aoindustries.com/ao-tempfiles/servlet/)
+# [<img src="ao-logo.png" alt="AO Logo" width="35" height="40">](https://github.com/aoindustries) [AO TempFiles](https://github.com/aoindustries/ao-tempfiles) / [Servlet](https://github.com/aoindustries/ao-tempfiles-servlet)
 <p>
 	<a href="https://aoindustries.com/life-cycle#project-alpha">
 		<img src="https://aoindustries.com/ao-badges/project-alpha.svg" alt="project: alpha" />
@@ -24,7 +24,7 @@
 	</a>
 </p>
 
-[Temporary file management](https://aoindustries.com/ao-tempfiles/) in a Servlet environment.
+[Temporary file management](https://github.com/aoindustries/ao-tempfiles) in a Servlet environment.
 
 ## Project Links
 * [Project Home](https://aoindustries.com/ao-tempfiles/servlet/)
