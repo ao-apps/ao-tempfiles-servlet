@@ -1,6 +1,6 @@
 /*
  * ao-tempfiles-servlet - Temporary file management in a Servlet environment.
- * Copyright (C) 2017  AO Industries, Inc.
+ * Copyright (C) 2017, 2019  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -123,9 +123,9 @@ implements
 		return tempFiles;
 	}
 
-	private static class HttpSessionTempFileContext implements Serializable, HttpSessionActivationListener {
+	public static final String SESSION_ATTRIBUTE_NAME = HttpSessionTempFileContext.class.getName();
 
-		private static final String ATTRIBUTE_NAME = HttpSessionTempFileContext.class.getName();
+	private static class HttpSessionTempFileContext implements Serializable, HttpSessionActivationListener {
 
 		private static final long serialVersionUID = 1L;
 
@@ -162,9 +162,9 @@ implements
 	@Override
 	public void sessionCreated(HttpSessionEvent hse) {
 		HttpSession session = hse.getSession();
-		assert session.getAttribute(HttpSessionTempFileContext.ATTRIBUTE_NAME) == null;
+		assert session.getAttribute(SESSION_ATTRIBUTE_NAME) == null;
 		session.setAttribute(
-			HttpSessionTempFileContext.ATTRIBUTE_NAME,
+			SESSION_ATTRIBUTE_NAME,
 			new HttpSessionTempFileContext(
 				session.getServletContext()
 			)
@@ -174,7 +174,7 @@ implements
 	@Override
 	public void sessionDestroyed(HttpSessionEvent hse) {
 		HttpSession session = hse.getSession();
-		HttpSessionTempFileContext wrapper = (HttpSessionTempFileContext)session.getAttribute(HttpSessionTempFileContext.ATTRIBUTE_NAME);
+		HttpSessionTempFileContext wrapper = (HttpSessionTempFileContext)session.getAttribute(SESSION_ATTRIBUTE_NAME);
 		if(wrapper != null) {
 			TempFileContext tempFiles = wrapper.tempFiles;
 			if(tempFiles != null) {
@@ -206,7 +206,7 @@ implements
 	 * @throws  IllegalStateException  if the temp files have not been added to the session.
 	 */
 	public static TempFileContext getTempFileContext(HttpSession session) throws IllegalStateException {
-		HttpSessionTempFileContext wrapper = (HttpSessionTempFileContext)session.getAttribute(HttpSessionTempFileContext.ATTRIBUTE_NAME);
+		HttpSessionTempFileContext wrapper = (HttpSessionTempFileContext)session.getAttribute(SESSION_ATTRIBUTE_NAME);
 		if(wrapper == null) throw new IllegalStateException(HttpSessionTempFileContext.class.getName() + " not added to HttpSession; please use Servlet 3.0+ specification or manually add listener to web.xml.");
 		TempFileContext tempFiles = wrapper.tempFiles;
 		if(tempFiles == null) throw new IllegalStateException(HttpSessionTempFileContext.class.getName() + ".tempFiles is null");
