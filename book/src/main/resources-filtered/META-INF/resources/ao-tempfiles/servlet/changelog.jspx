@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 ao-tempfiles-servlet - Temporary file management in a Servlet environment.
-Copyright (C) 2017  AO Industries, Inc.
+Copyright (C) 2017, 2019  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -53,7 +53,7 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 				scmUrl="@{documented.scm.url}"
 			>
 				<ul>
-					<li>New module to manage <core:link book="/ao-tempfiles" page="/">temporary files</core:link> in servlet-based applications and components.</li>
+					<li>New module to manage <core:link book="/ao-tempfiles" page="/index.jspx">temporary files</core:link> in servlet-based applications and components.</li>
 				</ul>
 			</changelog:release>
 		</c:if>
