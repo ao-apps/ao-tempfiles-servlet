@@ -37,6 +37,7 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2017-08-06T22:17:09-0500"
+		dateModified="2019-04-19T02:50:14-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:ao-tempfiles-servlet:pom.version}" />
@@ -51,11 +52,20 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 				groupId="@{documented.groupId}"
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{documented.scm.url}"
-			>
-				<ul>
-					<li>New module to manage <core:link book="/ao-tempfiles" page="/index.jspx">temporary files</core:link> in servlet-based applications and components.</li>
-				</ul>
-			</changelog:release>
+			/>
 		</c:if>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="1.0.0"
+			datePublished="2019-04-19T02:50:14-0500"
+			groupId="@{documented.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{documented.scm.url}"
+		>
+			<ul>
+				<li>New module to manage <core:link book="/ao-tempfiles" page="/index.jspx">temporary files</core:link> in servlet-based applications and components.</li>
+			</ul>
+		</changelog:release>
 	</core:page>
 </jsp:root>
