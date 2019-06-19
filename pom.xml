@@ -84,7 +84,7 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 			</dependency>
 			<!-- Direct -->
 			<dependency>
-				<groupId>com.aoindustries</groupId><artifactId>ao-tempfiles</artifactId><version>1.0.1-SNAPSHOT</version>
+				<groupId>com.aoindustries</groupId><artifactId>ao-tempfiles</artifactId><version>1.0.1-validation-SNAPSHOT</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
