@@ -29,14 +29,14 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 		<relativePath>../../ao-oss-parent/pom.xml</relativePath>
 	</parent>
 
-	<groupId>com.aoindustries</groupId><artifactId>ao-tempfiles-servlet-book</artifactId><version>1.0.1-POST-SNAPSHOT</version>
+	<groupId>com.aoindustries</groupId><artifactId>ao-tempfiles-servlet-book</artifactId><version>1.1.0-SNAPSHOT</version>
 	<packaging>bundle</packaging>
 
 	<properties>
 		<!-- These values are copied from the project being documented -->
 		<documented.groupId>com.aoindustries</documented.groupId><documented.artifactId>ao-tempfiles-servlet</documented.artifactId>
-		<documented.javaVersion>1.7</documented.javaVersion>
-		<documented.javac.link.javaApi>${javac.link.javaApi.jdk7}</documented.javac.link.javaApi>
+		<documented.javaVersion>1.8</documented.javaVersion>
+		<documented.javac.link.javaApi>${javac.link.javaApi.jdk8}</documented.javac.link.javaApi>
 		<documented.name>AO TempFiles Servlet</documented.name>
 		<documented.shortTitle>Servlet</documented.shortTitle>
 		<documented.url>https://aoindustries.com/ao-tempfiles/servlet/</documented.url>
@@ -105,7 +105,7 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 		</dependency>
 		<!-- Dependency for dependencyversion-maven-plugin only -->
 		<dependency>
-			<groupId>com.aoindustries</groupId><artifactId>ao-tempfiles-servlet</artifactId><version>1.0.1-POST-SNAPSHOT</version>
+			<groupId>com.aoindustries</groupId><artifactId>ao-tempfiles-servlet</artifactId><version>1.1.0-SNAPSHOT</version>
 			<type>pom</type>
 			<scope>provided</scope>
 			<optional>true</optional>
