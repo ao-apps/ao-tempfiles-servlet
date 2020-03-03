@@ -39,7 +39,7 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
 /**
- * Provides {@link TempFileContext temp file contexts} for {@link ServletContext},
+ * Provides {@linkplain TempFileContext temp file contexts} for {@link ServletContext},
  * {@link ServletRequest}, and {@link HttpSession}.
  */
 public class TempFileContextEE {
@@ -133,7 +133,7 @@ public class TempFileContextEE {
 	}
 
 	/**
-	 * Gets the {@link TempFileContext temp file context} for the given {@link ServletContext servlet context}.
+	 * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain ServletContext servlet context}.
 	 *
 	 * @throws  IllegalStateException  if the temp files have not been added to the servlet context.
 	 */
@@ -144,7 +144,7 @@ public class TempFileContextEE {
 	}
 
 	/**
-	 * Gets the {@link TempFileContext temp file context} for the given {@link ServletRequest servlet request}.
+	 * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain ServletRequest servlet request}.
 	 *
 	 * @throws  IllegalStateException  if the temp files have not been added to the servlet request.
 	 */
@@ -191,7 +191,7 @@ public class TempFileContextEE {
 	}
 
 	/**
-	 * Gets the {@link TempFileContext temp file context} for the given {@link HttpSession session}.
+	 * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain HttpSession session}.
 	 * <p>
 	 * At this time, temporary files put into the session are deleted when the session is
 	 * {@link HttpSessionActivationListener#sessionWillPassivate(javax.servlet.http.HttpSessionEvent) passivated},
