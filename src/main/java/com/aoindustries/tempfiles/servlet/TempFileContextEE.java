@@ -23,114 +23,23 @@
 package com.aoindustries.tempfiles.servlet;
 
 import com.aoindustries.tempfiles.TempFileContext;
-import java.io.File;
-import java.io.IOException;
 import java.io.Serializable;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
 import javax.servlet.ServletRequest;
-import javax.servlet.ServletRequestEvent;
-import javax.servlet.ServletRequestListener;
-import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionActivationListener;
-import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
 /**
  * Provides {@linkplain TempFileContext temp file contexts} for {@link ServletContext},
  * {@link ServletRequest}, and {@link HttpSession}.
  */
-public class TempFileContextEE {
+final public class TempFileContextEE {
 
-	private static final String ATTRIBUTE = TempFileContext.class.getName();
+	// Make no instances
+	private TempFileContextEE() {}
 
-	@WebListener
-	public static class Initializer implements
-		ServletContextListener,
-		ServletRequestListener,
-		HttpSessionListener
-	{
-
-		@Override
-		public void contextInitialized(ServletContextEvent event) {
-			ServletContext servletContext = event.getServletContext();
-			assert servletContext.getAttribute(ATTRIBUTE) == null;
-			servletContext.setAttribute(
-				ATTRIBUTE,
-				new TempFileContext(
-					(File)servletContext.getAttribute(ServletContext.TEMPDIR)
-				)
-			);
-		}
-
-		@Override
-		public void contextDestroyed(ServletContextEvent event) {
-			ServletContext servletContext = event.getServletContext();
-			TempFileContext tempFiles = (TempFileContext)servletContext.getAttribute(ATTRIBUTE);
-			if(tempFiles != null) {
-				try {
-					tempFiles.close();
-				} catch(IOException e) {
-					servletContext.log("Error deleting temporary files", e);
-				}
-			}
-		}
-
-		@Override
-		public void requestInitialized(ServletRequestEvent event) {
-			ServletRequest request = event.getServletRequest();
-			assert request.getAttribute(ATTRIBUTE) == null;
-			request.setAttribute(
-				ATTRIBUTE,
-				new TempFileContext(
-					(File)event.getServletContext().getAttribute(ServletContext.TEMPDIR)
-				)
-			);
-		}
-
-		@Override
-		public void requestDestroyed(ServletRequestEvent event) {
-			ServletRequest request = event.getServletRequest();
-			TempFileContext tempFiles = (TempFileContext)request.getAttribute(ATTRIBUTE);
-			if(tempFiles != null) {
-				try {
-					tempFiles.close();
-				} catch(IOException e) {
-					event.getServletContext().log("Error deleting temporary files", e);
-				}
-			}
-		}
-
-		@Override
-		public void sessionCreated(HttpSessionEvent event) {
-			HttpSession session = event.getSession();
-			assert session.getAttribute(SESSION_ATTRIBUTE) == null;
-			session.setAttribute(SESSION_ATTRIBUTE,
-				new HttpSessionTempFileContext(
-					session.getServletContext()
-				)
-			);
-		}
-
-		@Override
-		public void sessionDestroyed(HttpSessionEvent event) {
-			HttpSession session = event.getSession();
-			HttpSessionTempFileContext wrapper = (HttpSessionTempFileContext)session.getAttribute(SESSION_ATTRIBUTE);
-			if(wrapper != null) {
-				TempFileContext tempFiles = wrapper.tempFiles;
-				if(tempFiles != null) {
-					wrapper.tempFiles = null;
-					try {
-						tempFiles.close();
-					} catch(IOException e) {
-						session.getServletContext().log("Error deleting temporary files", e);
-					}
-				}
-			}
-		}
-	}
+	static final String ATTRIBUTE = TempFileContext.class.getName();
 
 	/**
 	 * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain ServletContext servlet context}.
@@ -139,7 +48,7 @@ public class TempFileContextEE {
 	 */
 	public static TempFileContext get(ServletContext servletContext) throws IllegalStateException {
 		TempFileContext tempFiles = (TempFileContext)servletContext.getAttribute(ATTRIBUTE);
-		if(tempFiles == null) throw new IllegalStateException(TempFileContextEE.Initializer.class.getName() + " not added to ServletContext; please use Servlet 3.0+ specification or manually add listener to web.xml.");
+		if(tempFiles == null) throw new IllegalStateException(Initializer.class.getName() + " not added to ServletContext; please use Servlet 3.0+ specification or manually add listener to web.xml.");
 		return tempFiles;
 	}
 
@@ -150,45 +59,11 @@ public class TempFileContextEE {
 	 */
 	public static TempFileContext get(ServletRequest request) throws IllegalStateException {
 		TempFileContext tempFiles = (TempFileContext)request.getAttribute(ATTRIBUTE);
-		if(tempFiles == null) throw new IllegalStateException(TempFileContextEE.Initializer.class.getName() + " not added to ServletRequest; please use Servlet 3.0+ specification or manually add listener to web.xml.");
+		if(tempFiles == null) throw new IllegalStateException(Initializer.class.getName() + " not added to ServletRequest; please use Servlet 3.0+ specification or manually add listener to web.xml.");
 		return tempFiles;
 	}
 
 	public static final String SESSION_ATTRIBUTE = HttpSessionTempFileContext.class.getName();
-
-	private static class HttpSessionTempFileContext implements Serializable, HttpSessionActivationListener {
-
-		private static final long serialVersionUID = 1L;
-
-		private transient TempFileContext tempFiles;
-
-		private HttpSessionTempFileContext(ServletContext servletContext) {
-			tempFiles = new TempFileContext(
-				(File)servletContext.getAttribute(ServletContext.TEMPDIR)
-			);
-		}
-
-		@Override
-		public void sessionWillPassivate(HttpSessionEvent event) {
-			if(tempFiles != null) {
-				try {
-					tempFiles.close();
-				} catch(IOException e) {
-					event.getSession().getServletContext().log("Error deleting temporary files", e);
-				}
-				tempFiles = null;
-			}
-		}
-
-		@Override
-		public void sessionDidActivate(HttpSessionEvent event) {
-			if(tempFiles == null) {
-				tempFiles = new TempFileContext(
-					(File)event.getSession().getServletContext().getAttribute(ServletContext.TEMPDIR)
-				);
-			}
-		}
-	}
 
 	/**
 	 * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain HttpSession session}.
@@ -210,10 +85,8 @@ public class TempFileContextEE {
 	public static TempFileContext get(HttpSession session) throws IllegalStateException {
 		HttpSessionTempFileContext wrapper = (HttpSessionTempFileContext)session.getAttribute(SESSION_ATTRIBUTE);
 		if(wrapper == null) throw new IllegalStateException(HttpSessionTempFileContext.class.getName() + " not added to HttpSession; please use Servlet 3.0+ specification or manually add listener to web.xml.");
-		TempFileContext tempFiles = wrapper.tempFiles;
-		if(tempFiles == null) throw new IllegalStateException(HttpSessionTempFileContext.class.getName() + ".tempFiles is null");
-		return tempFiles;
+		return wrapper.getTempFiles();
 	}
 
-	private TempFileContextEE() {}
+	// TODO: PageScope, compatible with or similar to RegistryEE?
 }
