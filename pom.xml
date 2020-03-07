@@ -33,11 +33,6 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 	<packaging>bundle</packaging>
 
 	<properties>
-		<javaVersion>1.8</javaVersion>
-		<compiler.bootclasspath>${bootclasspath.jdk8}</compiler.bootclasspath>
-		<javac.bootclasspath>${bootclasspath.jdk8}</javac.bootclasspath>
-		<javac.link.javaApi>${javac.link.javaApi.jdk8}</javac.link.javaApi>
-
 		<shortTitle>Servlet</shortTitle>
 		<javadoc.breadcrumbs><![CDATA[<a target="_top" href="https://aoindustries.com/ao-tempfiles/">AO TempFiles</a>
 / <a target="_top" href="${project.url}">${shortTitle}</a>]]></javadoc.breadcrumbs>
@@ -66,9 +61,9 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 						<groupId>org.apache.maven.plugins</groupId><artifactId>maven-javadoc-plugin</artifactId>
 						<configuration>
 							<links>
-								<link>${javac.link.javaApi}</link>
+								<link>${javadoc.link.javase}</link>
 								<!-- Java EE -->
-								<link>${javac.link.javaeeApi.6}</link>
+								<link>${javadoc.link.javaee}</link>
 								<!-- Direct -->
 								<link>https://aoindustries.com/ao-tempfiles/apidocs/</link>
 							</links>
