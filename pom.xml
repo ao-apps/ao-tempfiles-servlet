@@ -25,7 +25,7 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.aoindustries</groupId><artifactId>ao-oss-parent</artifactId><version>1.7.2-POST-SNAPSHOT</version>
+		<groupId>com.aoindustries</groupId><artifactId>ao-oss-parent</artifactId><version>1.8.0-SNAPSHOT</version>
 		<relativePath>../ao-oss-parent/pom.xml</relativePath>
 	</parent>
 
@@ -34,9 +34,9 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 
 	<properties>
 		<shortTitle>Servlet</shortTitle>
-		<javadoc.breadcrumbs><![CDATA[<a target="_top" href="https://aoindustries.com/ao-tempfiles/">AO TempFiles</a>
-/ <a target="_top" href="${project.url}">${shortTitle}</a>]]></javadoc.breadcrumbs>
-		<description.html><![CDATA[<a target="_top" href="https://aoindustries.com/ao-tempfiles/">Temporary file management</a> in a Servlet environment.]]></description.html>
+		<javadoc.breadcrumbs><![CDATA[<a target="${javadoc.target}" href="https://aoindustries.com/ao-tempfiles/">AO TempFiles</a>
+/ <a target="${javadoc.target}" href="${project.url}">${shortTitle}</a>]]></javadoc.breadcrumbs>
+		<description.html><![CDATA[<a target="${javadoc.target}" href="https://aoindustries.com/ao-tempfiles/">Temporary file management</a> in a Servlet environment.]]></description.html>
 	</properties>
 
 	<name>AO TempFiles Servlet</name>
