@@ -22,7 +22,7 @@ You should have received a copy of the GNU Lesser General Public License
 along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 -->
 <jsp:root
-	xmlns:ao="https://aoindustries.com/ao-taglib/"
+	xmlns:ao="https://oss.aoapps.com/taglib/"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:changelog="https://semanticcms.com/changelog/taglib/"
 	xmlns:core="https://semanticcms.com/core/taglib/"
@@ -37,7 +37,7 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2017-08-06T22:17:09-05:00"
-		dateModified="2021-05-22T13:07:02-05:00"
+		dateModified="2021-05-31T01:04:26-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -45,10 +45,12 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 				version="@{project.version}"
 				groupId="@{project.groupId}"
 				artifactId="@{documented.artifactId}"
+				repository="https://s01.oss.sonatype.org/content/repositories/snapshots/"
 				scmUrl="@{project.scm.url}"
 			>
 				<ul>
 					<li>Updated to <ao:a rel="nofollow" href="https://www.oracle.com/java/technologies/javaee/javaeetechnologies.html#javaee7">Java™ EE 7 Web Profile</ao:a> (Servlet 3.1, JSP 2.3, EL 3.0, and JSTL 1.2).</li>
+					<li>Maven artifact relocated from <code>com.aoindustries:ao-tempfiles-servlet</code> to <code>com.aoapps:ao-tempfiles-servlet</code>.</li>
 				</ul>
 			</changelog:release>
 		</c:if>
@@ -57,7 +59,7 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 			projectName="@{documented.name}"
 			version="1.1.0"
 			datePublished="2020-03-23T23:06:17-05:00"
-			groupId="@{project.groupId}"
+			groupId="com.aoindustries"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
 		>
@@ -80,7 +82,7 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 			projectName="@{documented.name}"
 			version="1.0.1"
 			datePublished="2019-06-19T07:37:48-05:00"
-			groupId="@{project.groupId}"
+			groupId="com.aoindustries"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
 		>
@@ -98,12 +100,12 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 			projectName="@{documented.name}"
 			version="1.0.0"
 			datePublished="2019-04-19T02:50:14-05:00"
-			groupId="@{project.groupId}"
+			groupId="com.aoindustries"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
 		>
 			<ul>
-				<li>New module to manage <core:link book="/ao-tempfiles" page="/index.jspx">temporary files</core:link> in servlet-based applications and components.</li>
+				<li>New module to manage <core:link book="/tempfiles" page="/index.jspx">temporary files</core:link> in servlet-based applications and components.</li>
 			</ul>
 		</changelog:release>
 	</core:page>
