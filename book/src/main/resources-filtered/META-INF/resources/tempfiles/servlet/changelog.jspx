@@ -37,7 +37,7 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2017-08-06T22:17:09-05:00"
-		dateModified="2021-05-31T01:04:26-05:00"
+		dateModified="2021-06-03T22:53:21-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -51,6 +51,7 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 				<ul>
 					<li>Updated to <ao:a rel="nofollow" href="https://www.oracle.com/java/technologies/javaee/javaeetechnologies.html#javaee7">Java™ EE 7 Web Profile</ao:a> (Servlet 3.1, JSP 2.3, EL 3.0, and JSTL 1.2).</li>
 					<li>Maven artifact relocated from <code>com.aoindustries:ao-tempfiles-servlet</code> to <code>com.aoapps:ao-tempfiles-servlet</code>.</li>
+					<li>Package renamed from <code>com.aoindustries.tempfiles.servlet</code> to <code>com.aoapps.tempfiles.servlet</code>.</li>
 				</ul>
 			</changelog:release>
 		</c:if>

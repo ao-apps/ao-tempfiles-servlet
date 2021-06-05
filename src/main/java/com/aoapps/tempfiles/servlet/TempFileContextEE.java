@@ -1,6 +1,6 @@
 /*
  * ao-tempfiles-servlet - Temporary file management in a Servlet environment.
- * Copyright (C) 2017, 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2017, 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -20,9 +20,9 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aoindustries.tempfiles.servlet;
+package com.aoapps.tempfiles.servlet;
 
-import com.aoindustries.tempfiles.TempFileContext;
+import com.aoapps.tempfiles.TempFileContext;
 import java.io.Serializable;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRequest;
