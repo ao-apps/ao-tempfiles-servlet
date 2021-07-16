@@ -9,6 +9,7 @@
 [![license: LGPL v3](https://oss.aoapps.com/ao-badges/license-lgpl-3.0.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 
 [![Build](https://github.com/aoindustries/ao-tempfiles-servlet/workflows/Build/badge.svg?branch=master)](https://github.com/aoindustries/ao-tempfiles-servlet/actions?query=workflow%3ABuild)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.aoapps/ao-tempfiles-servlet/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.aoapps/ao-tempfiles-servlet)
 
 [Temporary file management](https://github.com/aoindustries/ao-tempfiles) in a Servlet environment.
 
