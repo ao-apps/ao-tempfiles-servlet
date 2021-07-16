@@ -10,6 +10,12 @@
 
 [![Build](https://github.com/aoindustries/ao-tempfiles-servlet/workflows/Build/badge.svg?branch=master)](https://github.com/aoindustries/ao-tempfiles-servlet/actions?query=workflow%3ABuild)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.aoapps/ao-tempfiles-servlet/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.aoapps/ao-tempfiles-servlet)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.aoapps%3Aao-tempfiles-servlet&metric=alert_status)](https://sonarcloud.io/dashboard?branch=master&id=com.aoapps%3Aao-tempfiles-servlet)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.aoapps%3Aao-tempfiles-servlet&metric=ncloc)](https://sonarcloud.io/component_measures?branch=master&id=com.aoapps%3Aao-tempfiles-servlet&metric=ncloc)  
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.aoapps%3Aao-tempfiles-servlet&metric=reliability_rating)](https://sonarcloud.io/component_measures?branch=master&id=com.aoapps%3Aao-tempfiles-servlet&metric=Reliability)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.aoapps%3Aao-tempfiles-servlet&metric=security_rating)](https://sonarcloud.io/component_measures?branch=master&id=com.aoapps%3Aao-tempfiles-servlet&metric=Security)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.aoapps%3Aao-tempfiles-servlet&metric=sqale_rating)](https://sonarcloud.io/component_measures?branch=master&id=com.aoapps%3Aao-tempfiles-servlet&metric=Maintainability)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.aoapps%3Aao-tempfiles-servlet&metric=coverage)](https://sonarcloud.io/component_measures?branch=master&id=com.aoapps%3Aao-tempfiles-servlet&metric=Coverage)
 
 [Temporary file management](https://github.com/aoindustries/ao-tempfiles) in a Servlet environment.
 
