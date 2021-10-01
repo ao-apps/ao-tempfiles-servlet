@@ -37,7 +37,7 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2017-08-06T22:17:09-05:00"
-		dateModified="2021-07-05T01:19:32-05:00"
+		dateModified="2021-09-28T07:31:53-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -47,7 +47,15 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 				artifactId="@{documented.artifactId}"
 				repository="@{nexusUrl}content/repositories/snapshots/"
 				scmUrl="@{project.scm.url}"
-			/>
+			>
+				<ul>
+					<li>
+						<strong>Breaking change:</strong> <code>TempFileContextEE.SESSION_ATTRIBUTE</code> is now an
+						instance of <code>Scope.Session.Attribute</code>.
+					</li>
+					<li>New dependency: <code><core:link book="/servlet-util" page="/index.jspx">com.aoapps:ao-servlet-util</core:link></code>.</li>
+				</ul>
+			</changelog:release>
 		</c:if>
 
 		<changelog:release

@@ -53,7 +53,7 @@ public class ServletTempFileContext {
 	 * @deprecated  Please use {@link TempFileContextEE#SESSION_ATTRIBUTE}
 	 */
 	@Deprecated
-	public static final String SESSION_ATTRIBUTE = TempFileContextEE.SESSION_ATTRIBUTE;
+	public static final String SESSION_ATTRIBUTE = TempFileContextEE.SESSION_ATTRIBUTE.getName();
 
 	/**
 	 * @deprecated  Please use {@link TempFileContextEE#get(javax.servlet.http.HttpSession)}

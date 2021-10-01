@@ -22,9 +22,9 @@
  */
 package com.aoapps.tempfiles.servlet;
 
+import com.aoapps.servlet.attribute.ScopeEE;
 import com.aoapps.tempfiles.TempFileContext;
 import java.io.Closeable;
-import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import javax.servlet.ServletContext;
@@ -39,7 +39,7 @@ class HttpSessionTempFileContext implements Serializable, HttpSessionActivationL
 
 	HttpSessionTempFileContext(ServletContext servletContext) {
 		tempFiles = new TempFileContext(
-			(File)servletContext.getAttribute(ServletContext.TEMPDIR)
+			ScopeEE.Application.TEMPDIR.context(servletContext).get()
 		);
 	}
 
@@ -59,7 +59,7 @@ class HttpSessionTempFileContext implements Serializable, HttpSessionActivationL
 	public void sessionDidActivate(HttpSessionEvent event) {
 		if(tempFiles == null) {
 			tempFiles = new TempFileContext(
-				(File)event.getSession().getServletContext().getAttribute(ServletContext.TEMPDIR)
+				ScopeEE.Application.TEMPDIR.context(event.getSession().getServletContext()).get()
 			);
 		}
 	}

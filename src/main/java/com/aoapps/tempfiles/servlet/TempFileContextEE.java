@@ -22,6 +22,8 @@
  */
 package com.aoapps.tempfiles.servlet;
 
+import com.aoapps.servlet.attribute.AttributeEE;
+import com.aoapps.servlet.attribute.ScopeEE;
 import com.aoapps.tempfiles.TempFileContext;
 import java.io.Serializable;
 import javax.servlet.ServletContext;
@@ -39,7 +41,8 @@ final public class TempFileContextEE {
 	// Make no instances
 	private TempFileContextEE() {}
 
-	static final String ATTRIBUTE = TempFileContext.class.getName();
+	static final AttributeEE.Name<TempFileContext> ATTRIBUTE =
+		AttributeEE.attribute(TempFileContext.class.getName());
 
 	/**
 	 * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain ServletContext servlet context}.
@@ -47,7 +50,7 @@ final public class TempFileContextEE {
 	 * @throws  IllegalStateException  if the temp files have not been added to the servlet context.
 	 */
 	public static TempFileContext get(ServletContext servletContext) throws IllegalStateException {
-		TempFileContext tempFiles = (TempFileContext)servletContext.getAttribute(ATTRIBUTE);
+		TempFileContext tempFiles = ATTRIBUTE.context(servletContext).get();
 		if(tempFiles == null) throw new IllegalStateException(Initializer.class.getName() + " not added to ServletContext; please use Servlet 3.0+ specification or manually add listener to web.xml.");
 		return tempFiles;
 	}
@@ -58,12 +61,18 @@ final public class TempFileContextEE {
 	 * @throws  IllegalStateException  if the temp files have not been added to the servlet request.
 	 */
 	public static TempFileContext get(ServletRequest request) throws IllegalStateException {
-		TempFileContext tempFiles = (TempFileContext)request.getAttribute(ATTRIBUTE);
+		TempFileContext tempFiles = ATTRIBUTE.context(request).get();
 		if(tempFiles == null) throw new IllegalStateException(Initializer.class.getName() + " not added to ServletRequest; please use Servlet 3.0+ specification or manually add listener to web.xml.");
 		return tempFiles;
 	}
 
-	public static final String SESSION_ATTRIBUTE = HttpSessionTempFileContext.class.getName();
+	/**
+	 * Private instance with full type information.
+	 */
+	static final ScopeEE.Session.Attribute<HttpSessionTempFileContext> SESSION_ATTRIBUTE_INT =
+		ScopeEE.SESSION.attribute(HttpSessionTempFileContext.class.getName());
+
+	public static final ScopeEE.Session.Attribute<?> SESSION_ATTRIBUTE = SESSION_ATTRIBUTE_INT;
 
 	/**
 	 * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain HttpSession session}.
@@ -83,7 +92,7 @@ final public class TempFileContextEE {
 	 * @throws  IllegalStateException  if the temp files have not been added to the session.
 	 */
 	public static TempFileContext get(HttpSession session) throws IllegalStateException {
-		HttpSessionTempFileContext wrapper = (HttpSessionTempFileContext)session.getAttribute(SESSION_ATTRIBUTE);
+		HttpSessionTempFileContext wrapper = SESSION_ATTRIBUTE_INT.context(session).get();
 		if(wrapper == null) throw new IllegalStateException(HttpSessionTempFileContext.class.getName() + " not added to HttpSession; please use Servlet 3.0+ specification or manually add listener to web.xml.");
 		return wrapper.getTempFiles();
 	}

@@ -22,8 +22,8 @@
  */
 package com.aoapps.tempfiles.servlet;
 
+import com.aoapps.servlet.attribute.ScopeEE;
 import com.aoapps.tempfiles.TempFileContext;
-import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -46,11 +46,10 @@ public class Initializer implements
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
 		ServletContext servletContext = event.getServletContext();
-		assert servletContext.getAttribute(TempFileContextEE.ATTRIBUTE) == null;
-		servletContext.setAttribute(
-			TempFileContextEE.ATTRIBUTE,
+		assert TempFileContextEE.ATTRIBUTE.context(servletContext).get() == null;
+		TempFileContextEE.ATTRIBUTE.context(servletContext).set(
 			new TempFileContext(
-				(File)servletContext.getAttribute(ServletContext.TEMPDIR)
+				ScopeEE.Application.TEMPDIR.context(servletContext).get()
 			)
 		);
 	}
@@ -58,7 +57,7 @@ public class Initializer implements
 	@Override
 	public void contextDestroyed(ServletContextEvent event) {
 		ServletContext servletContext = event.getServletContext();
-		TempFileContext tempFiles = (TempFileContext)servletContext.getAttribute(TempFileContextEE.ATTRIBUTE);
+		TempFileContext tempFiles = TempFileContextEE.ATTRIBUTE.context(servletContext).get();
 		if(tempFiles != null) {
 			try {
 				tempFiles.close();
@@ -71,11 +70,10 @@ public class Initializer implements
 	@Override
 	public void requestInitialized(ServletRequestEvent event) {
 		ServletRequest request = event.getServletRequest();
-		assert request.getAttribute(TempFileContextEE.ATTRIBUTE) == null;
-		request.setAttribute(
-			TempFileContextEE.ATTRIBUTE,
+		assert TempFileContextEE.ATTRIBUTE.context(request).get() == null;
+		TempFileContextEE.ATTRIBUTE.context(request).set(
 			new TempFileContext(
-				(File)event.getServletContext().getAttribute(ServletContext.TEMPDIR)
+				ScopeEE.Application.TEMPDIR.context(event.getServletContext()).get()
 			)
 		);
 	}
@@ -83,7 +81,7 @@ public class Initializer implements
 	@Override
 	public void requestDestroyed(ServletRequestEvent event) {
 		ServletRequest request = event.getServletRequest();
-		TempFileContext tempFiles = (TempFileContext)request.getAttribute(TempFileContextEE.ATTRIBUTE);
+		TempFileContext tempFiles = TempFileContextEE.ATTRIBUTE.context(request).get();
 		if(tempFiles != null) {
 			try {
 				tempFiles.close();
@@ -96,8 +94,8 @@ public class Initializer implements
 	@Override
 	public void sessionCreated(HttpSessionEvent event) {
 		HttpSession session = event.getSession();
-		assert session.getAttribute(TempFileContextEE.SESSION_ATTRIBUTE) == null;
-		session.setAttribute(TempFileContextEE.SESSION_ATTRIBUTE,
+		assert TempFileContextEE.SESSION_ATTRIBUTE_INT.context(session).get() == null;
+		TempFileContextEE.SESSION_ATTRIBUTE_INT.context(session).set(
 			new HttpSessionTempFileContext(
 				session.getServletContext()
 			)
@@ -107,7 +105,7 @@ public class Initializer implements
 	@Override
 	public void sessionDestroyed(HttpSessionEvent event) {
 		HttpSession session = event.getSession();
-		HttpSessionTempFileContext wrapper = (HttpSessionTempFileContext)session.getAttribute(TempFileContextEE.SESSION_ATTRIBUTE);
+		HttpSessionTempFileContext wrapper = TempFileContextEE.SESSION_ATTRIBUTE_INT.context(session).get();
 		if(wrapper != null) {
 			try {
 				wrapper.close();
