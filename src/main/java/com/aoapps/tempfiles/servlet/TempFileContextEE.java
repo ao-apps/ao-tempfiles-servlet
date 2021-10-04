@@ -36,7 +36,7 @@ import javax.servlet.http.HttpSessionListener;
  * Provides {@linkplain TempFileContext temp file contexts} for {@link ServletContext},
  * {@link ServletRequest}, and {@link HttpSession}.
  */
-final public class TempFileContextEE {
+public final class TempFileContextEE {
 
 	// Make no instances
 	private TempFileContextEE() {}
