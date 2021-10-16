@@ -29,7 +29,7 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 		<relativePath>../../parent/pom.xml</relativePath>
 	</parent>
 
-	<groupId>com.aoapps</groupId><artifactId>ao-tempfiles-servlet-book</artifactId><version>3.0.0</version>
+	<groupId>com.aoapps</groupId><artifactId>ao-tempfiles-servlet-book</artifactId><version>3.0.0-POST-SNAPSHOT</version>
 	<packaging>bundle</packaging>
 
 	<properties>
@@ -77,7 +77,7 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 		<connection>scm:git:git://github.com/ao-apps/ao-tempfiles-servlet.git</connection>
 		<developerConnection>scm:git:git@github.com:ao-apps/ao-tempfiles-servlet.git</developerConnection>
 		<url>https://github.com/ao-apps/ao-tempfiles-servlet</url>
-		<tag>ao-tempfiles-servlet-book-3.0.0</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<issueManagement>
