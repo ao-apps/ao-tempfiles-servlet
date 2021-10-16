@@ -115,6 +115,15 @@ along with ao-tempfiles-servlet.  If not, see <http://www.gnu.org/licenses />.
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId><artifactId>maven-dependency-plugin</artifactId>
+				<configuration>
+					<ignoredDependencies>
+						<!-- No "module-info.java" in some release builds -->
+						<dependency>com.aoapps:ao-collections</dependency>
+					</ignoredDependencies>
+				</configuration>
+			</plugin>
 			<!-- Java 1.8: see https://maven.apache.org/plugins/maven-compiler-plugin/examples/module-info.html -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId>
