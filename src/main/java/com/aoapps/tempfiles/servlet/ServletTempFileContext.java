@@ -30,7 +30,7 @@ import javax.servlet.http.HttpSession;
 /**
  * @deprecated  Please use {@link TempFileContextEE}
  */
-@Deprecated
+@Deprecated/* Java 9: (forRemoval = true) */
 public abstract class ServletTempFileContext {
 
 	/** Make no instances. */
@@ -39,7 +39,7 @@ public abstract class ServletTempFileContext {
 	/**
 	 * @deprecated  Please use {@link TempFileContextEE#get(javax.servlet.ServletContext)}
 	 */
-	@Deprecated
+	@Deprecated/* Java 9: (forRemoval = true) */
 	public static TempFileContext getTempFileContext(ServletContext servletContext) throws IllegalStateException {
 		return TempFileContextEE.get(servletContext);
 	}
@@ -47,7 +47,7 @@ public abstract class ServletTempFileContext {
 	/**
 	 * @deprecated  Please use {@link TempFileContextEE#get(javax.servlet.ServletRequest)}
 	 */
-	@Deprecated
+	@Deprecated/* Java 9: (forRemoval = true) */
 	public static TempFileContext getTempFileContext(ServletRequest request) throws IllegalStateException {
 		return TempFileContextEE.get(request);
 	}
@@ -55,13 +55,13 @@ public abstract class ServletTempFileContext {
 	/**
 	 * @deprecated  Please use {@link TempFileContextEE#SESSION_ATTRIBUTE}
 	 */
-	@Deprecated
+	@Deprecated/* Java 9: (forRemoval = true) */
 	public static final String SESSION_ATTRIBUTE = TempFileContextEE.SESSION_ATTRIBUTE.getName();
 
 	/**
 	 * @deprecated  Please use {@link TempFileContextEE#get(javax.servlet.http.HttpSession)}
 	 */
-	@Deprecated
+	@Deprecated/* Java 9: (forRemoval = true) */
 	public static TempFileContext getTempFileContext(HttpSession session) throws IllegalStateException {
 		return TempFileContextEE.get(session);
 	}
