@@ -31,7 +31,10 @@ import javax.servlet.http.HttpSession;
  * @deprecated  Please use {@link TempFileContextEE}
  */
 @Deprecated
-public class ServletTempFileContext {
+public abstract class ServletTempFileContext {
+
+	/** Make no instances. */
+	private ServletTempFileContext() {throw new AssertionError();}
 
 	/**
 	 * @deprecated  Please use {@link TempFileContextEE#get(javax.servlet.ServletContext)}
@@ -62,6 +65,4 @@ public class ServletTempFileContext {
 	public static TempFileContext getTempFileContext(HttpSession session) throws IllegalStateException {
 		return TempFileContextEE.get(session);
 	}
-
-	private ServletTempFileContext() {}
 }

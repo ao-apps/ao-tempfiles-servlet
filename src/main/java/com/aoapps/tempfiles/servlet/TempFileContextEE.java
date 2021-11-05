@@ -36,10 +36,10 @@ import javax.servlet.http.HttpSessionListener;
  * Provides {@linkplain TempFileContext temp file contexts} for {@link ServletContext},
  * {@link ServletRequest}, and {@link HttpSession}.
  */
-public final class TempFileContextEE {
+public abstract class TempFileContextEE {
 
-	// Make no instances
-	private TempFileContextEE() {}
+	/** Make no instances. */
+	private TempFileContextEE() {throw new AssertionError();}
 
 	static final AttributeEE.Name<TempFileContext> ATTRIBUTE =
 		AttributeEE.attribute(TempFileContext.class.getName());
