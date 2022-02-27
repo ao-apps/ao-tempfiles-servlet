@@ -1,6 +1,6 @@
 /*
  * ao-tempfiles-servlet - Temporary file management in a Servlet environment.
- * Copyright (C) 2017, 2019, 2020, 2021  AO Industries, Inc.
+ * Copyright (C) 2017, 2019, 2020, 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -36,7 +36,7 @@ import javax.servlet.http.HttpSessionListener;
  * Provides {@linkplain TempFileContext temp file contexts} for {@link ServletContext},
  * {@link ServletRequest}, and {@link HttpSession}.
  */
-public abstract class TempFileContextEE {
+public final class TempFileContextEE {
 
 	/** Make no instances. */
 	private TempFileContextEE() {throw new AssertionError();}
