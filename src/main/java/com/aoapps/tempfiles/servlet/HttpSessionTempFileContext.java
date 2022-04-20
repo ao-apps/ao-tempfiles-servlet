@@ -34,49 +34,51 @@ import javax.servlet.http.HttpSessionEvent;
 
 class HttpSessionTempFileContext implements Serializable, HttpSessionActivationListener, Closeable {
 
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	private transient TempFileContext tempFiles;
+  private transient TempFileContext tempFiles;
 
-	HttpSessionTempFileContext(ServletContext servletContext) {
-		tempFiles = new TempFileContext(
-			ScopeEE.Application.TEMPDIR.context(servletContext).get()
-		);
-	}
+  HttpSessionTempFileContext(ServletContext servletContext) {
+    tempFiles = new TempFileContext(
+      ScopeEE.Application.TEMPDIR.context(servletContext).get()
+    );
+  }
 
-	@Override
-	public void sessionWillPassivate(HttpSessionEvent event) {
-		if(tempFiles != null) {
-			try {
-				tempFiles.close();
-			} catch(IOException e) {
-				event.getSession().getServletContext().log("Error deleting temporary files", e);
-			}
-			tempFiles = null;
-		}
-	}
+  @Override
+  public void sessionWillPassivate(HttpSessionEvent event) {
+    if (tempFiles != null) {
+      try {
+        tempFiles.close();
+      } catch (IOException e) {
+        event.getSession().getServletContext().log("Error deleting temporary files", e);
+      }
+      tempFiles = null;
+    }
+  }
 
-	@Override
-	public void sessionDidActivate(HttpSessionEvent event) {
-		if(tempFiles == null) {
-			tempFiles = new TempFileContext(
-				ScopeEE.Application.TEMPDIR.context(event.getSession().getServletContext()).get()
-			);
-		}
-	}
+  @Override
+  public void sessionDidActivate(HttpSessionEvent event) {
+    if (tempFiles == null) {
+      tempFiles = new TempFileContext(
+        ScopeEE.Application.TEMPDIR.context(event.getSession().getServletContext()).get()
+      );
+    }
+  }
 
-	TempFileContext getTempFiles() {
-		TempFileContext _tempFiles = tempFiles;
-		if(_tempFiles == null) throw new IllegalStateException(HttpSessionTempFileContext.class.getName() + ".tempFiles is null");
-		return _tempFiles;
-	}
+  TempFileContext getTempFiles() {
+    TempFileContext _tempFiles = tempFiles;
+    if (_tempFiles == null) {
+      throw new IllegalStateException(HttpSessionTempFileContext.class.getName() + ".tempFiles is null");
+    }
+    return _tempFiles;
+  }
 
-	@Override
-	public void close() throws IOException {
-		TempFileContext _tempFiles = tempFiles;
-		if(_tempFiles != null) {
-			tempFiles = null;
-			_tempFiles.close();
-		}
-	}
+  @Override
+  public void close() throws IOException {
+    TempFileContext _tempFiles = tempFiles;
+    if (_tempFiles != null) {
+      tempFiles = null;
+      _tempFiles.close();
+    }
+  }
 }

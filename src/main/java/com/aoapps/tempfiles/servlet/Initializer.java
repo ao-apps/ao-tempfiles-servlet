@@ -39,80 +39,80 @@ import javax.servlet.http.HttpSessionListener;
 
 @WebListener
 public class Initializer implements
-	ServletContextListener,
-	ServletRequestListener,
-	HttpSessionListener
+  ServletContextListener,
+  ServletRequestListener,
+  HttpSessionListener
 {
 
-	@Override
-	public void contextInitialized(ServletContextEvent event) {
-		ServletContext servletContext = event.getServletContext();
-		assert TempFileContextEE.ATTRIBUTE.context(servletContext).get() == null;
-		TempFileContextEE.ATTRIBUTE.context(servletContext).set(
-			new TempFileContext(
-				ScopeEE.Application.TEMPDIR.context(servletContext).get()
-			)
-		);
-	}
+  @Override
+  public void contextInitialized(ServletContextEvent event) {
+    ServletContext servletContext = event.getServletContext();
+    assert TempFileContextEE.ATTRIBUTE.context(servletContext).get() == null;
+    TempFileContextEE.ATTRIBUTE.context(servletContext).set(
+      new TempFileContext(
+        ScopeEE.Application.TEMPDIR.context(servletContext).get()
+      )
+    );
+  }
 
-	@Override
-	public void contextDestroyed(ServletContextEvent event) {
-		ServletContext servletContext = event.getServletContext();
-		TempFileContext tempFiles = TempFileContextEE.ATTRIBUTE.context(servletContext).get();
-		if(tempFiles != null) {
-			try {
-				tempFiles.close();
-			} catch(IOException e) {
-				servletContext.log("Error deleting temporary files", e);
-			}
-		}
-	}
+  @Override
+  public void contextDestroyed(ServletContextEvent event) {
+    ServletContext servletContext = event.getServletContext();
+    TempFileContext tempFiles = TempFileContextEE.ATTRIBUTE.context(servletContext).get();
+    if (tempFiles != null) {
+      try {
+        tempFiles.close();
+      } catch (IOException e) {
+        servletContext.log("Error deleting temporary files", e);
+      }
+    }
+  }
 
-	@Override
-	public void requestInitialized(ServletRequestEvent event) {
-		ServletRequest request = event.getServletRequest();
-		assert TempFileContextEE.ATTRIBUTE.context(request).get() == null;
-		TempFileContextEE.ATTRIBUTE.context(request).set(
-			new TempFileContext(
-				ScopeEE.Application.TEMPDIR.context(event.getServletContext()).get()
-			)
-		);
-	}
+  @Override
+  public void requestInitialized(ServletRequestEvent event) {
+    ServletRequest request = event.getServletRequest();
+    assert TempFileContextEE.ATTRIBUTE.context(request).get() == null;
+    TempFileContextEE.ATTRIBUTE.context(request).set(
+      new TempFileContext(
+        ScopeEE.Application.TEMPDIR.context(event.getServletContext()).get()
+      )
+    );
+  }
 
-	@Override
-	public void requestDestroyed(ServletRequestEvent event) {
-		ServletRequest request = event.getServletRequest();
-		TempFileContext tempFiles = TempFileContextEE.ATTRIBUTE.context(request).get();
-		if(tempFiles != null) {
-			try {
-				tempFiles.close();
-			} catch(IOException e) {
-				event.getServletContext().log("Error deleting temporary files", e);
-			}
-		}
-	}
+  @Override
+  public void requestDestroyed(ServletRequestEvent event) {
+    ServletRequest request = event.getServletRequest();
+    TempFileContext tempFiles = TempFileContextEE.ATTRIBUTE.context(request).get();
+    if (tempFiles != null) {
+      try {
+        tempFiles.close();
+      } catch (IOException e) {
+        event.getServletContext().log("Error deleting temporary files", e);
+      }
+    }
+  }
 
-	@Override
-	public void sessionCreated(HttpSessionEvent event) {
-		HttpSession session = event.getSession();
-		assert TempFileContextEE.SESSION_ATTRIBUTE_INT.context(session).get() == null;
-		TempFileContextEE.SESSION_ATTRIBUTE_INT.context(session).set(
-			new HttpSessionTempFileContext(
-				session.getServletContext()
-			)
-		);
-	}
+  @Override
+  public void sessionCreated(HttpSessionEvent event) {
+    HttpSession session = event.getSession();
+    assert TempFileContextEE.SESSION_ATTRIBUTE_INT.context(session).get() == null;
+    TempFileContextEE.SESSION_ATTRIBUTE_INT.context(session).set(
+      new HttpSessionTempFileContext(
+        session.getServletContext()
+      )
+    );
+  }
 
-	@Override
-	public void sessionDestroyed(HttpSessionEvent event) {
-		HttpSession session = event.getSession();
-		HttpSessionTempFileContext wrapper = TempFileContextEE.SESSION_ATTRIBUTE_INT.context(session).get();
-		if(wrapper != null) {
-			try {
-				wrapper.close();
-			} catch(IOException e) {
-				session.getServletContext().log("Error deleting temporary files", e);
-			}
-		}
-	}
+  @Override
+  public void sessionDestroyed(HttpSessionEvent event) {
+    HttpSession session = event.getSession();
+    HttpSessionTempFileContext wrapper = TempFileContextEE.SESSION_ATTRIBUTE_INT.context(session).get();
+    if (wrapper != null) {
+      try {
+        wrapper.close();
+      } catch (IOException e) {
+        session.getServletContext().log("Error deleting temporary files", e);
+      }
+    }
+  }
 }

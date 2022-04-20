@@ -39,64 +39,72 @@ import javax.servlet.http.HttpSessionListener;
  */
 public final class TempFileContextEE {
 
-	/** Make no instances. */
-	private TempFileContextEE() {throw new AssertionError();}
+  /** Make no instances. */
+  private TempFileContextEE() {
+    throw new AssertionError();
+  }
 
-	static final AttributeEE.Name<TempFileContext> ATTRIBUTE =
-		AttributeEE.attribute(TempFileContext.class.getName());
+  static final AttributeEE.Name<TempFileContext> ATTRIBUTE =
+    AttributeEE.attribute(TempFileContext.class.getName());
 
-	/**
-	 * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain ServletContext servlet context}.
-	 *
-	 * @throws  IllegalStateException  if the temp files have not been added to the servlet context.
-	 */
-	public static TempFileContext get(ServletContext servletContext) throws IllegalStateException {
-		TempFileContext tempFiles = ATTRIBUTE.context(servletContext).get();
-		if(tempFiles == null) throw new IllegalStateException(Initializer.class.getName() + " not added to ServletContext; please use Servlet 3.0+ specification or manually add listener to web.xml.");
-		return tempFiles;
-	}
+  /**
+   * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain ServletContext servlet context}.
+   *
+   * @throws  IllegalStateException  if the temp files have not been added to the servlet context.
+   */
+  public static TempFileContext get(ServletContext servletContext) throws IllegalStateException {
+    TempFileContext tempFiles = ATTRIBUTE.context(servletContext).get();
+    if (tempFiles == null) {
+      throw new IllegalStateException(Initializer.class.getName() + " not added to ServletContext; please use Servlet 3.0+ specification or manually add listener to web.xml.");
+    }
+    return tempFiles;
+  }
 
-	/**
-	 * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain ServletRequest servlet request}.
-	 *
-	 * @throws  IllegalStateException  if the temp files have not been added to the servlet request.
-	 */
-	public static TempFileContext get(ServletRequest request) throws IllegalStateException {
-		TempFileContext tempFiles = ATTRIBUTE.context(request).get();
-		if(tempFiles == null) throw new IllegalStateException(Initializer.class.getName() + " not added to ServletRequest; please use Servlet 3.0+ specification or manually add listener to web.xml.");
-		return tempFiles;
-	}
+  /**
+   * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain ServletRequest servlet request}.
+   *
+   * @throws  IllegalStateException  if the temp files have not been added to the servlet request.
+   */
+  public static TempFileContext get(ServletRequest request) throws IllegalStateException {
+    TempFileContext tempFiles = ATTRIBUTE.context(request).get();
+    if (tempFiles == null) {
+      throw new IllegalStateException(Initializer.class.getName() + " not added to ServletRequest; please use Servlet 3.0+ specification or manually add listener to web.xml.");
+    }
+    return tempFiles;
+  }
 
-	/**
-	 * Private instance with full type information.
-	 */
-	static final ScopeEE.Session.Attribute<HttpSessionTempFileContext> SESSION_ATTRIBUTE_INT =
-		ScopeEE.SESSION.attribute(HttpSessionTempFileContext.class.getName());
+  /**
+   * Private instance with full type information.
+   */
+  static final ScopeEE.Session.Attribute<HttpSessionTempFileContext> SESSION_ATTRIBUTE_INT =
+    ScopeEE.SESSION.attribute(HttpSessionTempFileContext.class.getName());
 
-	public static final ScopeEE.Session.Attribute<?> SESSION_ATTRIBUTE = SESSION_ATTRIBUTE_INT;
+  public static final ScopeEE.Session.Attribute<?> SESSION_ATTRIBUTE = SESSION_ATTRIBUTE_INT;
 
-	/**
-	 * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain HttpSession session}.
-	 * <p>
-	 * At this time, temporary files put into the session are deleted when the session is
-	 * {@link HttpSessionActivationListener#sessionWillPassivate(javax.servlet.http.HttpSessionEvent) passivated},
-	 * at the {@link HttpSessionListener#sessionDestroyed(javax.servlet.http.HttpSessionEvent) end of the session},
-	 * or on JVM shutdown.  The temporary files are not {@link Serializable serialized} with the session.
-	 * </p>
-	 * <p>
-	 * TODO: {@link TempFileContext} is not currently {@link Serializable}.  What would it mean to
-	 * serialize temp files?  Would the files themselves be wrapped-up into the serialized form?
-	 * Would just the filenames be serialized, assuming the underlying temp files are available
-	 * to all servlet containers that might get the session?
-	 * </p>
-	 *
-	 * @throws  IllegalStateException  if the temp files have not been added to the session.
-	 */
-	public static TempFileContext get(HttpSession session) throws IllegalStateException {
-		HttpSessionTempFileContext wrapper = SESSION_ATTRIBUTE_INT.context(session).get();
-		if(wrapper == null) throw new IllegalStateException(HttpSessionTempFileContext.class.getName() + " not added to HttpSession; please use Servlet 3.0+ specification or manually add listener to web.xml.");
-		return wrapper.getTempFiles();
-	}
+  /**
+   * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain HttpSession session}.
+   * <p>
+   * At this time, temporary files put into the session are deleted when the session is
+   * {@link HttpSessionActivationListener#sessionWillPassivate(javax.servlet.http.HttpSessionEvent) passivated},
+   * at the {@link HttpSessionListener#sessionDestroyed(javax.servlet.http.HttpSessionEvent) end of the session},
+   * or on JVM shutdown.  The temporary files are not {@link Serializable serialized} with the session.
+   * </p>
+   * <p>
+   * TODO: {@link TempFileContext} is not currently {@link Serializable}.  What would it mean to
+   * serialize temp files?  Would the files themselves be wrapped-up into the serialized form?
+   * Would just the filenames be serialized, assuming the underlying temp files are available
+   * to all servlet containers that might get the session?
+   * </p>
+   *
+   * @throws  IllegalStateException  if the temp files have not been added to the session.
+   */
+  public static TempFileContext get(HttpSession session) throws IllegalStateException {
+    HttpSessionTempFileContext wrapper = SESSION_ATTRIBUTE_INT.context(session).get();
+    if (wrapper == null) {
+      throw new IllegalStateException(HttpSessionTempFileContext.class.getName() + " not added to HttpSession; please use Servlet 3.0+ specification or manually add listener to web.xml.");
+    }
+    return wrapper.getTempFiles();
+  }
 
-	// TODO: PageScope, compatible with or similar to RegistryEE?
+  // TODO: PageScope, compatible with or similar to RegistryEE?
 }
