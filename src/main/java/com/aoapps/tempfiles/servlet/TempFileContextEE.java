@@ -45,7 +45,7 @@ public final class TempFileContextEE {
   }
 
   static final AttributeEE.Name<TempFileContext> ATTRIBUTE =
-    AttributeEE.attribute(TempFileContext.class.getName());
+      AttributeEE.attribute(TempFileContext.class.getName());
 
   /**
    * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain ServletContext servlet context}.
@@ -77,7 +77,7 @@ public final class TempFileContextEE {
    * Private instance with full type information.
    */
   static final ScopeEE.Session.Attribute<HttpSessionTempFileContext> SESSION_ATTRIBUTE_INT =
-    ScopeEE.SESSION.attribute(HttpSessionTempFileContext.class.getName());
+      ScopeEE.SESSION.attribute(HttpSessionTempFileContext.class.getName());
 
   public static final ScopeEE.Session.Attribute<?> SESSION_ATTRIBUTE = SESSION_ATTRIBUTE_INT;
 

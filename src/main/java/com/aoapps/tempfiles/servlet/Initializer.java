@@ -39,9 +39,9 @@ import javax.servlet.http.HttpSessionListener;
 
 @WebListener
 public class Initializer implements
-  ServletContextListener,
-  ServletRequestListener,
-  HttpSessionListener
+    ServletContextListener,
+    ServletRequestListener,
+    HttpSessionListener
 {
 
   @Override
@@ -49,9 +49,9 @@ public class Initializer implements
     ServletContext servletContext = event.getServletContext();
     assert TempFileContextEE.ATTRIBUTE.context(servletContext).get() == null;
     TempFileContextEE.ATTRIBUTE.context(servletContext).set(
-      new TempFileContext(
-        ScopeEE.Application.TEMPDIR.context(servletContext).get()
-      )
+        new TempFileContext(
+            ScopeEE.Application.TEMPDIR.context(servletContext).get()
+        )
     );
   }
 
@@ -73,9 +73,9 @@ public class Initializer implements
     ServletRequest request = event.getServletRequest();
     assert TempFileContextEE.ATTRIBUTE.context(request).get() == null;
     TempFileContextEE.ATTRIBUTE.context(request).set(
-      new TempFileContext(
-        ScopeEE.Application.TEMPDIR.context(event.getServletContext()).get()
-      )
+        new TempFileContext(
+            ScopeEE.Application.TEMPDIR.context(event.getServletContext()).get()
+        )
     );
   }
 
@@ -97,9 +97,9 @@ public class Initializer implements
     HttpSession session = event.getSession();
     assert TempFileContextEE.SESSION_ATTRIBUTE_INT.context(session).get() == null;
     TempFileContextEE.SESSION_ATTRIBUTE_INT.context(session).set(
-      new HttpSessionTempFileContext(
-        session.getServletContext()
-      )
+        new HttpSessionTempFileContext(
+            session.getServletContext()
+        )
     );
   }
 

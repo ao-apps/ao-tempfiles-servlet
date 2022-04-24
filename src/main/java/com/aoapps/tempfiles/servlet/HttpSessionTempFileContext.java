@@ -40,7 +40,7 @@ class HttpSessionTempFileContext implements Serializable, HttpSessionActivationL
 
   HttpSessionTempFileContext(ServletContext servletContext) {
     tempFiles = new TempFileContext(
-      ScopeEE.Application.TEMPDIR.context(servletContext).get()
+        ScopeEE.Application.TEMPDIR.context(servletContext).get()
     );
   }
 
@@ -60,7 +60,7 @@ class HttpSessionTempFileContext implements Serializable, HttpSessionActivationL
   public void sessionDidActivate(HttpSessionEvent event) {
     if (tempFiles == null) {
       tempFiles = new TempFileContext(
-        ScopeEE.Application.TEMPDIR.context(event.getSession().getServletContext()).get()
+          ScopeEE.Application.TEMPDIR.context(event.getSession().getServletContext()).get()
       );
     }
   }
