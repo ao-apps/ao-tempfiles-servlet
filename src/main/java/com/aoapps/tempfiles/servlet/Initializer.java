@@ -37,12 +37,14 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
+/**
+ * Initializes {@link TempFileContextEE}.
+ */
 @WebListener
 public class Initializer implements
     ServletContextListener,
     ServletRequestListener,
-    HttpSessionListener
-{
+    HttpSessionListener {
 
   @Override
   public void contextInitialized(ServletContextEvent event) {

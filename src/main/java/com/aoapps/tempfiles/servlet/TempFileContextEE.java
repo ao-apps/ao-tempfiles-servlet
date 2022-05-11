@@ -79,6 +79,9 @@ public final class TempFileContextEE {
   static final ScopeEE.Session.Attribute<HttpSessionTempFileContext> SESSION_ATTRIBUTE_INT =
       ScopeEE.SESSION.attribute(HttpSessionTempFileContext.class.getName());
 
+  /**
+   * The session attribute.
+   */
   public static final ScopeEE.Session.Attribute<?> SESSION_ATTRIBUTE = SESSION_ATTRIBUTE_INT;
 
   /**

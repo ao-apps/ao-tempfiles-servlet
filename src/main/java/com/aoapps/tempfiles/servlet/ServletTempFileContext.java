@@ -29,6 +29,9 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
+ * Provides {@linkplain TempFileContext temp file contexts} for {@link ServletContext},
+ * {@link ServletRequest}, and {@link HttpSession}.
+ *
  * @deprecated  Please use {@link TempFileContextEE}
  */
 @Deprecated // Java 9: (forRemoval = true)
@@ -40,6 +43,8 @@ public final class ServletTempFileContext {
   }
 
   /**
+   * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain ServletContext servlet context}.
+   *
    * @deprecated  Please use {@link TempFileContextEE#get(javax.servlet.ServletContext)}
    */
   @Deprecated // Java 9: (forRemoval = true)
@@ -48,20 +53,26 @@ public final class ServletTempFileContext {
   }
 
   /**
+   * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain ServletRequest servlet request}.
+   *
    * @deprecated  Please use {@link TempFileContextEE#get(javax.servlet.ServletRequest)}
    */
-  @Deprecated // ava 9: (forRemoval = true)
+  @Deprecated // Java 9: (forRemoval = true)
   public static TempFileContext getTempFileContext(ServletRequest request) throws IllegalStateException {
     return TempFileContextEE.get(request);
   }
 
   /**
+   * The session attribute name.
+   *
    * @deprecated  Please use {@link TempFileContextEE#SESSION_ATTRIBUTE}
    */
   @Deprecated // Java 9: (forRemoval = true)
   public static final String SESSION_ATTRIBUTE = TempFileContextEE.SESSION_ATTRIBUTE.getName();
 
   /**
+   * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain HttpSession session}.
+   *
    * @deprecated  Please use {@link TempFileContextEE#get(javax.servlet.http.HttpSession)}
    */
   @Deprecated // Java 9: (forRemoval = true)

@@ -66,19 +66,19 @@ class HttpSessionTempFileContext implements Serializable, HttpSessionActivationL
   }
 
   TempFileContext getTempFiles() {
-    TempFileContext _tempFiles = tempFiles;
-    if (_tempFiles == null) {
+    TempFileContext myTempFiles = tempFiles;
+    if (myTempFiles == null) {
       throw new IllegalStateException(HttpSessionTempFileContext.class.getName() + ".tempFiles is null");
     }
-    return _tempFiles;
+    return myTempFiles;
   }
 
   @Override
   public void close() throws IOException {
-    TempFileContext _tempFiles = tempFiles;
-    if (_tempFiles != null) {
+    TempFileContext myTempFiles = tempFiles;
+    if (myTempFiles != null) {
       tempFiles = null;
-      _tempFiles.close();
+      myTempFiles.close();
     }
   }
 }
