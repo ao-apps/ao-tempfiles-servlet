@@ -23,7 +23,7 @@
 * [Project Home](https://oss.aoapps.com/tempfiles/servlet/)
 * [Changelog](https://oss.aoapps.com/tempfiles/servlet/changelog)
 * [API Docs](https://oss.aoapps.com/tempfiles/servlet/apidocs/)
-* [Maven Central Repository](https://central.sonatype.com/search?namespace=com.aoapps&q=a%3Aao-tempfiles-servlet)
+* [Maven Central Repository](https://central.sonatype.com/artifact/com.aoapps/ao-tempfiles-servlet)
 * [GitHub](https://github.com/ao-apps/ao-tempfiles-servlet)
 
 ## Contact Us
