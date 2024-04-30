@@ -1,6 +1,6 @@
 /*
  * ao-tempfiles-servlet - Temporary file management in a Servlet environment.
- * Copyright (C) 2017, 2019, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2017, 2019, 2020, 2021, 2022, 2024  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -48,6 +48,17 @@ public final class TempFileContextEE {
       AttributeEE.attribute(TempFileContext.class.getName());
 
   /**
+   * Private instance with full type information.
+   */
+  static final ScopeEE.Session.Attribute<HttpSessionTempFileContext> SESSION_ATTRIBUTE_INT =
+      ScopeEE.SESSION.attribute(HttpSessionTempFileContext.class.getName());
+
+  /**
+   * The session attribute.
+   */
+  public static final ScopeEE.Session.Attribute<?> SESSION_ATTRIBUTE = SESSION_ATTRIBUTE_INT;
+
+  /**
    * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain ServletContext servlet context}.
    *
    * @throws  IllegalStateException  if the temp files have not been added to the servlet context.
@@ -72,17 +83,6 @@ public final class TempFileContextEE {
     }
     return tempFiles;
   }
-
-  /**
-   * Private instance with full type information.
-   */
-  static final ScopeEE.Session.Attribute<HttpSessionTempFileContext> SESSION_ATTRIBUTE_INT =
-      ScopeEE.SESSION.attribute(HttpSessionTempFileContext.class.getName());
-
-  /**
-   * The session attribute.
-   */
-  public static final ScopeEE.Session.Attribute<?> SESSION_ATTRIBUTE = SESSION_ATTRIBUTE_INT;
 
   /**
    * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain HttpSession session}.

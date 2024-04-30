@@ -1,6 +1,6 @@
 /*
  * ao-tempfiles-servlet - Temporary file management in a Servlet environment.
- * Copyright (C) 2017, 2019, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2017, 2019, 2020, 2021, 2022, 2024  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -43,6 +43,14 @@ public final class ServletTempFileContext {
   }
 
   /**
+   * The session attribute name.
+   *
+   * @deprecated  Please use {@link TempFileContextEE#SESSION_ATTRIBUTE}
+   */
+  @Deprecated // Java 9: (forRemoval = true)
+  public static final String SESSION_ATTRIBUTE = TempFileContextEE.SESSION_ATTRIBUTE.getName();
+
+  /**
    * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain ServletContext servlet context}.
    *
    * @deprecated  Please use {@link TempFileContextEE#get(javax.servlet.ServletContext)}
@@ -61,14 +69,6 @@ public final class ServletTempFileContext {
   public static TempFileContext getTempFileContext(ServletRequest request) throws IllegalStateException {
     return TempFileContextEE.get(request);
   }
-
-  /**
-   * The session attribute name.
-   *
-   * @deprecated  Please use {@link TempFileContextEE#SESSION_ATTRIBUTE}
-   */
-  @Deprecated // Java 9: (forRemoval = true)
-  public static final String SESSION_ATTRIBUTE = TempFileContextEE.SESSION_ATTRIBUTE.getName();
 
   /**
    * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain HttpSession session}.
