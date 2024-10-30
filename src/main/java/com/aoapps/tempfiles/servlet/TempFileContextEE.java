@@ -86,18 +86,16 @@ public final class TempFileContextEE {
 
   /**
    * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain HttpSession session}.
-   * <p>
-   * At this time, temporary files put into the session are deleted when the session is
+   *
+   * <p>At this time, temporary files put into the session are deleted when the session is
    * {@link HttpSessionActivationListener#sessionWillPassivate(javax.servlet.http.HttpSessionEvent) passivated},
    * at the {@link HttpSessionListener#sessionDestroyed(javax.servlet.http.HttpSessionEvent) end of the session},
-   * or on JVM shutdown.  The temporary files are not {@link Serializable serialized} with the session.
-   * </p>
-   * <p>
-   * TODO: {@link TempFileContext} is not currently {@link Serializable}.  What would it mean to
+   * or on JVM shutdown.  The temporary files are not {@link Serializable serialized} with the session.</p>
+   *
+   * <p>TODO: {@link TempFileContext} is not currently {@link Serializable}.  What would it mean to
    * serialize temp files?  Would the files themselves be wrapped-up into the serialized form?
    * Would just the filenames be serialized, assuming the underlying temp files are available
-   * to all servlet containers that might get the session?
-   * </p>
+   * to all servlet containers that might get the session?</p>
    *
    * @throws  IllegalStateException  if the temp files have not been added to the session.
    */
