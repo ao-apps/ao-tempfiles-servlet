@@ -1,6 +1,6 @@
 /*
  * ao-tempfiles-servlet - Temporary file management in a Servlet environment.
- * Copyright (C) 2017, 2019, 2020, 2021, 2022, 2024  AO Industries, Inc.
+ * Copyright (C) 2017, 2019, 2020, 2021, 2022, 2024, 2025  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -34,7 +34,7 @@ import javax.servlet.http.HttpSession;
  *
  * @deprecated  Please use {@link TempFileContextEE}
  */
-@Deprecated // Java 9: (forRemoval = true)
+@Deprecated(forRemoval = true)
 public final class ServletTempFileContext {
 
   /** Make no instances. */
@@ -47,7 +47,7 @@ public final class ServletTempFileContext {
    *
    * @deprecated  Please use {@link TempFileContextEE#SESSION_ATTRIBUTE}
    */
-  @Deprecated // Java 9: (forRemoval = true)
+  @Deprecated(forRemoval = true)
   public static final String SESSION_ATTRIBUTE = TempFileContextEE.SESSION_ATTRIBUTE.getName();
 
   /**
@@ -55,7 +55,7 @@ public final class ServletTempFileContext {
    *
    * @deprecated  Please use {@link TempFileContextEE#get(javax.servlet.ServletContext)}
    */
-  @Deprecated // Java 9: (forRemoval = true)
+  @Deprecated(forRemoval = true)
   public static TempFileContext getTempFileContext(ServletContext servletContext) throws IllegalStateException {
     return TempFileContextEE.get(servletContext);
   }
@@ -65,7 +65,7 @@ public final class ServletTempFileContext {
    *
    * @deprecated  Please use {@link TempFileContextEE#get(javax.servlet.ServletRequest)}
    */
-  @Deprecated // Java 9: (forRemoval = true)
+  @Deprecated(forRemoval = true)
   public static TempFileContext getTempFileContext(ServletRequest request) throws IllegalStateException {
     return TempFileContextEE.get(request);
   }
@@ -75,7 +75,7 @@ public final class ServletTempFileContext {
    *
    * @deprecated  Please use {@link TempFileContextEE#get(javax.servlet.http.HttpSession)}
    */
-  @Deprecated // Java 9: (forRemoval = true)
+  @Deprecated(forRemoval = true)
   public static TempFileContext getTempFileContext(HttpSession session) throws IllegalStateException {
     return TempFileContextEE.get(session);
   }
