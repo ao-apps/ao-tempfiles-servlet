@@ -8,14 +8,14 @@
 [![semantic versioning: 2.0.0](https://oss.aoapps.com/ao-badges/semver-2.0.0.svg)](https://semver.org/spec/v2.0.0.html)
 [![license: LGPL v3](https://oss.aoapps.com/ao-badges/license-lgpl-3.0.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 
-[![Build](https://github.com/ao-apps/ao-tempfiles-servlet/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/ao-apps/ao-tempfiles-servlet/actions?query=workflow%3ABuild)
+[![Build](https://github.com/ao-apps/ao-tempfiles-servlet/actions/workflows/build.yml/badge.svg?branch=javaee)](https://github.com/ao-apps/ao-tempfiles-servlet/actions?query=workflow%3ABuild)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.aoapps/ao-tempfiles-servlet/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.aoapps/ao-tempfiles-servlet)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.aoapps%3Aao-tempfiles-servlet&metric=alert_status)](https://sonarcloud.io/dashboard?branch=master&id=com.aoapps%3Aao-tempfiles-servlet)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.aoapps%3Aao-tempfiles-servlet&metric=ncloc)](https://sonarcloud.io/component_measures?branch=master&id=com.aoapps%3Aao-tempfiles-servlet&metric=ncloc)  
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.aoapps%3Aao-tempfiles-servlet&metric=reliability_rating)](https://sonarcloud.io/component_measures?branch=master&id=com.aoapps%3Aao-tempfiles-servlet&metric=Reliability)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.aoapps%3Aao-tempfiles-servlet&metric=security_rating)](https://sonarcloud.io/component_measures?branch=master&id=com.aoapps%3Aao-tempfiles-servlet&metric=Security)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.aoapps%3Aao-tempfiles-servlet&metric=sqale_rating)](https://sonarcloud.io/component_measures?branch=master&id=com.aoapps%3Aao-tempfiles-servlet&metric=Maintainability)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.aoapps%3Aao-tempfiles-servlet&metric=coverage)](https://sonarcloud.io/component_measures?branch=master&id=com.aoapps%3Aao-tempfiles-servlet&metric=Coverage)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?branch=javaee&project=com.aoapps%3Aao-tempfiles-servlet&metric=alert_status)](https://sonarcloud.io/dashboard?branch=javaee&id=com.aoapps%3Aao-tempfiles-servlet)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?branch=javaee&project=com.aoapps%3Aao-tempfiles-servlet&metric=ncloc)](https://sonarcloud.io/component_measures?branch=javaee&id=com.aoapps%3Aao-tempfiles-servlet&metric=ncloc)  
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?branch=javaee&project=com.aoapps%3Aao-tempfiles-servlet&metric=reliability_rating)](https://sonarcloud.io/component_measures?branch=javaee&id=com.aoapps%3Aao-tempfiles-servlet&metric=Reliability)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?branch=javaee&project=com.aoapps%3Aao-tempfiles-servlet&metric=security_rating)](https://sonarcloud.io/component_measures?branch=javaee&id=com.aoapps%3Aao-tempfiles-servlet&metric=Security)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?branch=javaee&project=com.aoapps%3Aao-tempfiles-servlet&metric=sqale_rating)](https://sonarcloud.io/component_measures?branch=javaee&id=com.aoapps%3Aao-tempfiles-servlet&metric=Maintainability)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?branch=javaee&project=com.aoapps%3Aao-tempfiles-servlet&metric=coverage)](https://sonarcloud.io/component_measures?branch=javaee&id=com.aoapps%3Aao-tempfiles-servlet&metric=Coverage)
 
 [Temporary file management](https://github.com/ao-apps/ao-tempfiles) in a Servlet environment.
 
