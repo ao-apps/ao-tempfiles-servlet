@@ -34,7 +34,7 @@ def upstreamProjects = [
   'checkstyle-config', // <groupId>com.aoapps</groupId><artifactId>ao-checkstyle-config</artifactId>
 
   // Direct
-  'servlet-util', // <groupId>com.aoapps</groupId><artifactId>ao-servlet-util</artifactId>
+  'servlet-util-javaee', // <groupId>com.aoapps</groupId><artifactId>ao-servlet-util</artifactId>
   'tempfiles', // <groupId>com.aoapps</groupId><artifactId>ao-tempfiles</artifactId>
   // No Jenkins: <groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId>
 
