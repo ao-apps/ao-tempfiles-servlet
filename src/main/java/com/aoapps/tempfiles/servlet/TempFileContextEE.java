@@ -1,6 +1,6 @@
 /*
  * ao-tempfiles-servlet - Temporary file management in a Servlet environment.
- * Copyright (C) 2017, 2019, 2020, 2021, 2022, 2024  AO Industries, Inc.
+ * Copyright (C) 2017, 2019, 2020, 2021, 2022, 2024, 2025, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -26,12 +26,12 @@ package com.aoapps.tempfiles.servlet;
 import com.aoapps.servlet.attribute.AttributeEE;
 import com.aoapps.servlet.attribute.ScopeEE;
 import com.aoapps.tempfiles.TempFileContext;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSessionActivationListener;
+import jakarta.servlet.http.HttpSessionListener;
 import java.io.Serializable;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionActivationListener;
-import javax.servlet.http.HttpSessionListener;
 
 /**
  * Provides {@linkplain TempFileContext temp file contexts} for {@link ServletContext},
@@ -88,8 +88,8 @@ public final class TempFileContextEE {
    * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain HttpSession session}.
    *
    * <p>At this time, temporary files put into the session are deleted when the session is
-   * {@link HttpSessionActivationListener#sessionWillPassivate(javax.servlet.http.HttpSessionEvent) passivated},
-   * at the {@link HttpSessionListener#sessionDestroyed(javax.servlet.http.HttpSessionEvent) end of the session},
+   * {@link HttpSessionActivationListener#sessionWillPassivate(jakarta.servlet.http.HttpSessionEvent) passivated},
+   * at the {@link HttpSessionListener#sessionDestroyed(jakarta.servlet.http.HttpSessionEvent) end of the session},
    * or on JVM shutdown.  The temporary files are not {@link Serializable serialized} with the session.</p>
    *
    * <p>TODO: {@link TempFileContext} is not currently {@link Serializable}.  What would it mean to

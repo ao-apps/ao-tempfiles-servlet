@@ -1,6 +1,6 @@
 /*
  * ao-tempfiles-servlet - Temporary file management in a Servlet environment.
- * Copyright (C) 2017, 2019, 2020, 2021, 2022, 2024, 2025  AO Industries, Inc.
+ * Copyright (C) 2017, 2019, 2020, 2021, 2022, 2024, 2025, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -24,9 +24,9 @@
 package com.aoapps.tempfiles.servlet;
 
 import com.aoapps.tempfiles.TempFileContext;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Provides {@linkplain TempFileContext temp file contexts} for {@link ServletContext},
@@ -53,7 +53,7 @@ public final class ServletTempFileContext {
   /**
    * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain ServletContext servlet context}.
    *
-   * @deprecated  Please use {@link TempFileContextEE#get(javax.servlet.ServletContext)}
+   * @deprecated  Please use {@link TempFileContextEE#get(jakarta.servlet.ServletContext)}
    */
   @Deprecated(forRemoval = true)
   public static TempFileContext getTempFileContext(ServletContext servletContext) throws IllegalStateException {
@@ -63,7 +63,7 @@ public final class ServletTempFileContext {
   /**
    * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain ServletRequest servlet request}.
    *
-   * @deprecated  Please use {@link TempFileContextEE#get(javax.servlet.ServletRequest)}
+   * @deprecated  Please use {@link TempFileContextEE#get(jakarta.servlet.ServletRequest)}
    */
   @Deprecated(forRemoval = true)
   public static TempFileContext getTempFileContext(ServletRequest request) throws IllegalStateException {
@@ -73,7 +73,7 @@ public final class ServletTempFileContext {
   /**
    * Gets the {@linkplain TempFileContext temp file context} for the given {@linkplain HttpSession session}.
    *
-   * @deprecated  Please use {@link TempFileContextEE#get(javax.servlet.http.HttpSession)}
+   * @deprecated  Please use {@link TempFileContextEE#get(jakarta.servlet.http.HttpSession)}
    */
   @Deprecated(forRemoval = true)
   public static TempFileContext getTempFileContext(HttpSession session) throws IllegalStateException {

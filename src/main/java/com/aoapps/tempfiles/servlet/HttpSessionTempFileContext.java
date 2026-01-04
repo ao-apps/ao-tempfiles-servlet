@@ -1,6 +1,6 @@
 /*
  * ao-tempfiles-servlet - Temporary file management in a Servlet environment.
- * Copyright (C) 2017, 2019, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2017, 2019, 2020, 2021, 2022, 2025, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -25,12 +25,12 @@ package com.aoapps.tempfiles.servlet;
 
 import com.aoapps.servlet.attribute.ScopeEE;
 import com.aoapps.tempfiles.TempFileContext;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpSessionActivationListener;
+import jakarta.servlet.http.HttpSessionEvent;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.Serializable;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpSessionActivationListener;
-import javax.servlet.http.HttpSessionEvent;
 
 class HttpSessionTempFileContext implements Serializable, HttpSessionActivationListener, Closeable {
 
