@@ -21,9 +21,10 @@
  * along with ao-tempfiles-servlet.  If not, see <https://www.gnu.org/licenses/>.
  */
 module com.aoapps.tempfiles.servlet {
-  exports com.aoapps.tempfiles.servlet;
   // Direct
   requires com.aoapps.servlet.util; // <groupId>com.aoapps</groupId><artifactId>ao-servlet-util</artifactId>
   requires com.aoapps.tempfiles; // <groupId>com.aoapps</groupId><artifactId>ao-tempfiles</artifactId>
   requires jakarta.servlet; // <groupId>jakarta.servlet</groupId><artifactId>jakarta.servlet-api</artifactId>
+
+  exports com.aoapps.tempfiles.servlet;
 }
